@@ -3,7 +3,7 @@ import React from 'react';
 export default class Toolbar extends React.Component {
     render() {
         return (
-            <div class="col-sm-3">
+            <div class="col-sm-3 agz-toolbar">
                 toolbar
             </div>
         );
