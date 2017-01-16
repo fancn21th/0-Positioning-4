@@ -1,0 +1,4 @@
+/node_modules
+/src/client.min.js
+.idea
+/src/client.bundle.css
