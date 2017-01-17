@@ -1,10 +1,13 @@
 import React from 'react';
 
-export default class Toolbar extends React.Component {
+export default class viewPart extends React.Component {
     render() {
+
+        console.log(this.props.className);
+
         return (
             <div class={this.props.className}>
-                toolbar
+                {this.props.index}
             </div>
         );
     }
