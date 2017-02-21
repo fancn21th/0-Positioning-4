@@ -23,6 +23,13 @@ module.exports = {
             loader: 'file'
         },
         {
+            test:   /\.(png|gif|jpe?g|svg)$/i,
+            loader: 'url',
+            query: {
+                limit: 10000
+            }
+        },
+        {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract("style-loader", "css-loader")
         }
