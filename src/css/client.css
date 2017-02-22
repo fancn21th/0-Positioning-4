@@ -11,7 +11,10 @@ body{
 }
 
 .agz-viewPart{
-    border: 4px solid white;
+    border: 1px dashed #eee;
     height: 80px;
-    background: #eee;
+}
+
+.agz-draggable{
+    z-index: 9000;
 }
