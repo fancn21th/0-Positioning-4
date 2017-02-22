@@ -4,32 +4,54 @@ import 'jquery-ui/ui/widgets/droppable'
 
 export default class viewPart extends React.Component {
 
+    state = {
+        isOccupied : false
+    }
+
     rendeDroppable = () => {
-        $(".droppable").droppable({
+        const that = this;
+
+        $("#droppable" + that.props.index).droppable({
             drop: function( event, ui ) {
                 $( this )
                     .addClass( "ui-state-highlight" )
                     .find( "p" )
                     .html( "Dropped!" );
+
+                that.setState({
+                    isOccupied: true
+                })
             }
-        });
+        })
     }
 
     componentDidMount = () => {
-        this.rendeDroppable();
+        this.rendeDroppable()
     }
 
     componentDidUpdate = () => {
-        this.rendeDroppable();
+        this.rendeDroppable()
     }
 
-
     render() {
+
+        const beforeDropped = (
+            <p>Drop here</p>
+        );
+
+        const afterDropped = (
+            <input type="text" className="agz-viewPart__textbox"/>
+        );
+
+        const id = "droppable" + this.props.index
+
+        const viewPart = this.state.isOccupied ?  afterDropped : beforeDropped
+
         return (
             <div class={this.props.className}>
                 {this.props.index}
-                <div class="ui-widget-header droppable">
-                    <p>Drop here</p>
+                <div id={id} class="ui-widget-header">
+                    { viewPart }
                 </div>
             </div>
         );

@@ -5,7 +5,7 @@ import 'jquery-ui/ui/widgets/draggable'
 export default class Toolbar extends React.Component {
 
     renderDraggable = () => {
-        $("#draggable").draggable({ revert: "invalid" });
+        $("#draggable").draggable({ revert: "valid" });
     }
 
     componentDidMount = () => {

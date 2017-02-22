@@ -5,6 +5,7 @@ import GridView from './GridView'
 import PropPanel from './PropPanel'
 
 export default class Layout extends React.Component {
+
     render() {
         return (
             <div>

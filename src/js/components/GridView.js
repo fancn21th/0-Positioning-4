@@ -11,7 +11,7 @@ export default class GridView extends React.Component {
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const viewParts = numbers.map((number) =>
             <ViewPart index={number}
-                      key={number} // key 属性是为了解决报警问题
+                      key={number}
                       className={classNameList[_.random(0,2)]}/>
         );
 
