@@ -28,7 +28,7 @@ export default class viewPart extends React.Component {
         return (
             <div class={this.props.className}>
                 {this.props.index}
-                <div class="droppable ui-widget-header">
+                <div class="ui-widget-header droppable">
                     <p>Drop here</p>
                 </div>
             </div>
