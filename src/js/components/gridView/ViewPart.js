@@ -13,10 +13,7 @@ export default class viewPart extends React.Component {
 
         $("#droppable" + that.props.index).droppable({
             drop: function( event, ui ) {
-                $( this )
-                    .addClass( "ui-state-highlight" )
-                    .find( "p" )
-                    .html( "Dropped!" );
+                $( this ).addClass( "ui-state-highlight" )
 
                 that.setState({
                     isOccupied: true
@@ -29,12 +26,7 @@ export default class viewPart extends React.Component {
         this.rendeDroppable()
     }
 
-    componentDidUpdate = () => {
-        this.rendeDroppable()
-    }
-
     render() {
-
         const beforeDropped = (
             <p>Drop here</p>
         );

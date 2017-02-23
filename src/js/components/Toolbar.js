@@ -19,8 +19,7 @@ export default class Toolbar extends React.Component {
     render() {
         return (
             <div class={this.props.className}>
-                toolbar
-
+                <span class="label label-default">工具栏</span>
                 <div id="draggable" class="ui-widget-content agz-draggable">
                     <p>Drag me to my target</p>
                 </div>

@@ -3,6 +3,11 @@ import ViewPart from './gridView/ViewPart';
 import _ from 'lodash';
 
 export default class GridView extends React.Component {
+
+    state = {
+
+    }
+
     render() {
         const oneColClassName = "col-lg-3 col-md-4 col-sm-6 agz-viewPart";
         const twoColClassName = "col-lg-6 col-md-6 col-sm-12 agz-viewPart";
