@@ -8,12 +8,17 @@ export default class viewPart extends React.Component {
         isOccupied : false
     }
 
+    handleClick = (evt) => {
+        evt.preventDefault()
+    }
+
     rendeDroppable = () => {
         const that = this;
 
+        // 当draggable落在droppable上
         $("#droppable" + that.props.index).droppable({
-            drop: function( event, ui ) {
-                $( this ).addClass( "ui-state-highlight" )
+            drop: function(event, ui) {
+                $(this).addClass("ui-state-highlight")
 
                 that.setState({
                     isOccupied: true
@@ -40,7 +45,7 @@ export default class viewPart extends React.Component {
         const viewPart = this.state.isOccupied ?  afterDropped : beforeDropped
 
         return (
-            <div class={this.props.className}>
+            <div class={this.props.className} onClick={this.handleClick}>
                 {this.props.index}
                 <div id={id} class="ui-widget-header">
                     { viewPart }
