@@ -1,8 +1,9 @@
-import React from 'react';
-import ViewPart from './gridView/ViewPart';
-import _ from 'lodash';
+import React from 'react'
+import $ from 'jquery'
+import ViewPart from './gridView/ViewPart'
 import FormStore from '../stores/FormStore'
 import * as FormActions from '../actions/FormActions'
+import 'jquery-ui/ui/widgets/droppable'
 
 export default class FormDesigner extends React.Component {
 
@@ -20,6 +21,21 @@ export default class FormDesigner extends React.Component {
         })
     }
 
+    rendeDroppable = () => {
+        const that = this;
+
+        // 当draggable落在droppable上
+        $("#formDesigner").droppable({
+            drop: function(event, ui) {
+                console.log('something dropped')
+            }
+        })
+    }
+
+    componentDidMount = () => {
+        this.rendeDroppable()
+    }
+
     componentWillMount() {
         FormStore.on("change", this.getForm)
         FormActions.getForm(null)
@@ -30,10 +46,10 @@ export default class FormDesigner extends React.Component {
     }
 
     render() {
-        const singleColClassName = "col-lg-3 col-md-4 col-sm-6 agz-viewPart";
-        const twoColClassName = "col-lg-6 col-md-6 col-sm-12 agz-viewPart";
-        const threeColClassName = "col-lg-9 col-md-12 col-sm-12 agz-viewPart";
-        const fourColClassName = "col-lg-12 col-md-12 col-sm-12 agz-viewPart";
+        const singleColClassName = "col-lg-3 col-md-4 col-sm-6 agz-viewPart"
+        const twoColClassName = "col-lg-6 col-md-6 col-sm-12 agz-viewPart"
+        const threeColClassName = "col-lg-9 col-md-12 col-sm-12 agz-viewPart"
+        const fourColClassName = "col-lg-12 col-md-12 col-sm-12 agz-viewPart"
 
         const classNameList = [
             singleColClassName,
@@ -43,14 +59,13 @@ export default class FormDesigner extends React.Component {
         ];
 
         const viewParts = this.state.form.fields.map((field) => {
-
             return <ViewPart index={field.id}
                              key={field.id}
                              className={classNameList[field.colSpan - 1]}/>
         });
 
         return (
-            <div class={this.props.className}>
+            <div id="formDesigner" class={this.props.className}>
                 <div class="row">
                     {viewParts}
                 </div>

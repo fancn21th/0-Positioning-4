@@ -1,20 +1,21 @@
 import dispatcher from "../dispatcher"
+import _ from 'lodash'
 
 export function getForm(formId){
     setTimeout(() => {
         dispatcher.dispatch({type: "RECEIVE_FORM", form: {
-            fields: [
-                {
-                    id: 8484848484,
-                    text: "Test Text 1",
-                    colSpan: 2
-                },
-                {
-                    id: 6262627272,
-                    text: "Test Text 2",
-                    colSpan: 3
-                },
-            ]
+            fields: [1,2,3,4,5,6,7,8].map((idx)=>{
+                return {
+                    id: Date.now()+ idx,
+                    text: 'Test Text ' + idx,
+                    colSpan: _.random(1, 4),
+                    type: 'textbox'
+                }
+            })
         }});
     }, 1000);
+}
+
+export function selectField() {
+    
 }
