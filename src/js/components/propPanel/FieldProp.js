@@ -1,8 +1,36 @@
 import React from 'react'
+import FormStore from '../../stores/FormStore'
 
 export default class FieldProp extends React.Component {
 
+    constructor(){
+        super()
+        this.state = {
+            propStyle: 0
+        }
+    }
+
+    updateProp = () => {
+        this.setState({
+            propStyle: FormStore.getSelectedFiled().colSpan
+        })
+    }
+
+    componentWillMount() {
+        FormStore.on("SELECT_FIELD_EVT", this.updateProp)
+    }
+
+    componentWillUnmount() {
+        FormStore.removeListener("SELECT_FIELD_EVT", this.updateProp);
+    }
+
     render() {
+        const defaultClass = 'btn btn-default'
+        const selectedClass = 'btn btn-primary'
+        const classList = ['', defaultClass, defaultClass, defaultClass, defaultClass]
+
+        classList[this.state.propStyle] = selectedClass
+
         return (
             <div>
                 <ul class="nav nav-tabs">
@@ -10,10 +38,10 @@ export default class FieldProp extends React.Component {
                 </ul>
                 <br/>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default">单列</button>
-                    <button type="button" class="btn btn-default">两列</button>
-                    <button type="button" class="btn btn-default">三列</button>
-                    <button type="button" class="btn btn-primary">四列</button>
+                    <button type="button" class={classList[1]}>单列</button>
+                    <button type="button" class={classList[2]}>两列</button>
+                    <button type="button" class={classList[3]}>三列</button>
+                    <button type="button" class={classList[4]}>四列</button>
                 </div>
             </div>
         )

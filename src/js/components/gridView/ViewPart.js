@@ -1,9 +1,11 @@
 import React from 'react';
+import * as ViewPartActions from '../../actions/ViewPartActions'
 
 export default class viewPart extends React.Component {
 
     handleClick = (evt) => {
         evt.preventDefault()
+        ViewPartActions.selectField(this.props.index)
     }
 
     render() {

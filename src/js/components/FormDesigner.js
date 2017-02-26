@@ -35,12 +35,12 @@ export default class FormDesigner extends React.Component {
     }
 
     componentWillMount() {
-        FormStore.on("change", this.getForm)
+        FormStore.on("CREATE_FIELD_EVT", this.getForm)
         FormActions.recieveForm(null)
     }
 
     componentWillUnmount() {
-        FormStore.removeListener("change", this.getForm);
+        FormStore.removeListener("CREATE_FIELD_EVT", this.getForm);
     }
 
     render() {

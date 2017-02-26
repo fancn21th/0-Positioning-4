@@ -4,7 +4,7 @@ import _ from 'lodash'
 export function recieveForm(formId){
     setTimeout(() => {
         dispatcher.dispatch({type: "RECEIVE_FORM", form: {
-            fields: [1,2,3,4].map((idx)=>{
+            fields: [1, 2, 3, 4].map((idx)=>{
                 return {
                     id: Date.now()+ idx,
                     text: 'Test Text ' + idx,
@@ -12,12 +12,12 @@ export function recieveForm(formId){
                     type: 'textbox'
                 }
             })
-        }});
-    }, 1000);
+        }})
+    }, 1000)
 }
 
 export function createField() {
     dispatcher.dispatch({
         type: "CREATE_FIELD"
-    });
+    })
 }
