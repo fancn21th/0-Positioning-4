@@ -17,6 +17,7 @@ body{
 
 .agz-draggable{
     z-index: 9000;
+    width: 150px;
 }
 
 .agz-viewPart__textbox{

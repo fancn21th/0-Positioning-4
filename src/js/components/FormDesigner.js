@@ -22,12 +22,10 @@ export default class FormDesigner extends React.Component {
     }
 
     rendeDroppable = () => {
-        const that = this;
-
         // 当draggable落在droppable上
         $("#formDesigner").droppable({
             drop: function(event, ui) {
-                console.log('something dropped')
+                FormActions.createField()
             }
         })
     }
@@ -38,7 +36,7 @@ export default class FormDesigner extends React.Component {
 
     componentWillMount() {
         FormStore.on("change", this.getForm)
-        FormActions.getForm(null)
+        FormActions.recieveForm(null)
     }
 
     componentWillUnmount() {

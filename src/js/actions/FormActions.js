@@ -1,10 +1,10 @@
 import dispatcher from "../dispatcher"
 import _ from 'lodash'
 
-export function getForm(formId){
+export function recieveForm(formId){
     setTimeout(() => {
         dispatcher.dispatch({type: "RECEIVE_FORM", form: {
-            fields: [1,2,3,4,5,6,7,8].map((idx)=>{
+            fields: [1,2,3,4].map((idx)=>{
                 return {
                     id: Date.now()+ idx,
                     text: 'Test Text ' + idx,
@@ -16,6 +16,8 @@ export function getForm(formId){
     }, 1000);
 }
 
-export function selectField() {
-    
+export function createField() {
+    dispatcher.dispatch({
+        type: "CREATE_FIELD"
+    });
 }
