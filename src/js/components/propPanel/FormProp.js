@@ -10,10 +10,8 @@ export default class FormProp extends React.Component {
                 </ul>
                 <br/>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default">单列</button>
-                    <button type="button" class="btn btn-default">两列</button>
-                    <button type="button" class="btn btn-default">三列</button>
-                    <button type="button" class="btn btn-primary">四列</button>
+                    <button type="button" class="btn btn-default">独占模式（一列）</button>
+                    <button type="button" class="btn btn-primary">普通模式（四列）</button>
                 </div>
             </div>
         )
