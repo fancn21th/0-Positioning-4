@@ -27,9 +27,9 @@ export default class FieldProp extends React.Component {
     render() {
         const defaultClass = 'btn btn-default'
         const selectedClass = 'btn btn-primary'
-        const classList = ['', defaultClass, defaultClass, defaultClass, defaultClass]
+        const classList = [defaultClass, defaultClass, defaultClass, defaultClass]
 
-        classList[this.state.propStyle] = selectedClass
+        classList[this.state.propStyle -1 ] = selectedClass
 
         return (
             <div>
@@ -38,10 +38,10 @@ export default class FieldProp extends React.Component {
                 </ul>
                 <br/>
                 <div class="btn-group" role="group">
-                    <button type="button" class={classList[1]}>单列</button>
-                    <button type="button" class={classList[2]}>两列</button>
-                    <button type="button" class={classList[3]}>三列</button>
-                    <button type="button" class={classList[4]}>四列</button>
+                    <button type="button" class={classList[0]}>单列</button>
+                    <button type="button" class={classList[1]}>两列</button>
+                    <button type="button" class={classList[2]}>三列</button>
+                    <button type="button" class={classList[3]}>四列</button>
                 </div>
             </div>
         )
