@@ -1,5 +1,51 @@
-import { add } from './FormDesignerHelper'
+import { getStuffedArray } from './FormDesignerHelper'
 
-test('测试', () => {
-    expect(true).toEqual(true)
+test('turn [1,4] into [1,3,4]', () => {
+    const expected = [1,3,4]
+    const result = getStuffedArray([1,4])
+
+    expect(result).toEqual(expected)
 })
+
+test('turn [1,1,4] into [1,1,2,4]', () => {
+    const expected = [1,1,2,4]
+    const result = getStuffedArray([1,1,4])
+
+    expect(result).toEqual(expected)
+})
+
+test('turn [1,1,1,4] into [1,1,1,1,4]', () => {
+    const expected = [1,1,1,1,4]
+    const result = getStuffedArray([1,1,1,4])
+
+    expect(result).toEqual(expected)
+})
+
+test('turn [1,2,4] into [1,2,1,4]', () => {
+    const expected = [1,2,1,4]
+    const result = getStuffedArray([1,2,4])
+
+    expect(result).toEqual(expected)
+})
+
+test('turn [3,4] into [3,1,4]', () => {
+    const expected = [3,1,4]
+    const result = getStuffedArray([3,4])
+
+    expect(result).toEqual(expected)
+})
+
+test('turn [4,1,4] into [4,1,3,4]', () => {
+    const expected = [4,1,3,4]
+    const result = getStuffedArray([4,1,4])
+
+    expect(result).toEqual(expected)
+})
+
+test('turn [4,4,4] into [4,4,4]', () => {
+    const expected = [4,4,4]
+    const result = getStuffedArray([4,4,4])
+
+    expect(result).toEqual(expected)
+})
+
