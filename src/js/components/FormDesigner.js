@@ -54,13 +54,13 @@ export default class FormDesigner extends React.Component {
             twoColClassName,
             threeColClassName,
             fourColClassName
-        ];
+        ]
 
         const viewParts = this.state.form.fields.map((field) => {
             return <ViewPart index={field.id}
                              key={field.id}
                              className={classNameList[field.colSpan - 1]}/>
-        });
+        })
 
         return (
             <div id="formDesigner" class={this.props.className}>
@@ -68,6 +68,6 @@ export default class FormDesigner extends React.Component {
                     {viewParts}
                 </div>
             </div>
-        );
+        )
     }
 }
