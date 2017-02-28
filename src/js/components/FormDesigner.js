@@ -1,9 +1,11 @@
 import React from 'react'
 import $ from 'jquery'
-import ViewPart from './gridView/ViewPart'
-import FormStore from '../stores/FormStore'
-import * as FormActions from '../actions/FormActions'
 import 'jquery-ui/ui/widgets/droppable'
+
+import ViewPart from './gridView/ViewPart'
+import * as FormActions from '../actions/FormActions'
+import FormStore from '../stores/FormStore'
+import { getStuffedFields, getStuffedIndexArray, getStuffedArray } from '../lib/FormDesignerHelper'
 
 export default class FormDesigner extends React.Component {
 
@@ -61,6 +63,10 @@ export default class FormDesigner extends React.Component {
                              key={field.id}
                              className={classNameList[field.colSpan - 1]}/>
         })
+
+        const tmp = getStuffedFields(this.state.form.fields)
+        console.log(getStuffedIndexArray(tmp))
+        console.log(getStuffedArray(tmp))
 
         return (
             <div id="formDesigner" class={this.props.className}>
