@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 import * as ViewPartActions from '../../actions/ViewPartActions'
+import { Textbox } from './viewParts/Textbox'
+import { Stuffed } from './viewParts/Stuffed'
 
 export default class viewPart extends React.Component {
 
@@ -9,15 +11,7 @@ export default class viewPart extends React.Component {
     }
 
     render() {
-        const textbox = (
-            <input type="text" className="agz-viewPart__textbox"/>
-        )
-
-        const stuffed = (
-            <h5>I am stuffed</h5>
-        )
-
-        const content = this.props.type == 'textbox' ? textbox : stuffed
+        const content = this.props.type == 'textbox' ? <Textbox/> : <Stuffed/>
 
         return (
             <div class={this.props.className} onClick={this.handleClick}>

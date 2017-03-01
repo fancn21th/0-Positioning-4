@@ -2,7 +2,7 @@ import React from 'react'
 import $ from 'jquery'
 import 'jquery-ui/ui/widgets/droppable'
 
-import ViewPart from './gridView/ViewPart'
+import ViewPart from './formDesigner/ViewPart'
 import * as FormActions from '../actions/FormActions'
 import FormStore from '../stores/FormStore'
 import { getStuffedFields } from '../lib/FormDesignerHelper'
