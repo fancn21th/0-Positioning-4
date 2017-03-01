@@ -26,7 +26,7 @@ export default class FormDesigner extends React.Component {
     rendeDroppable = () => {
         // 当draggable落在droppable上
         $("#formDesigner").droppable({
-            drop: function(event, ui) {
+            drop: function(evt, ui) {
                 FormActions.createField()
             }
         })

@@ -16,8 +16,9 @@ export function recieveForm(formId){
     }, 1000)
 }
 
-export function createField() {
+export function createField(idx) {
     dispatcher.dispatch({
-        type: "CREATE_FIELD"
+        type: "CREATE_FIELD",
+        index: idx
     })
 }

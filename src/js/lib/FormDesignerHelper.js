@@ -67,7 +67,8 @@ export const getStuffedFields = (fields) => {
             id: Date.now()+ offset + 'S',
             text: 'Stuffed',
             colSpan: element.value,
-            type: 'stuffed'
+            type: 'stuffed',
+            index: element.index
         })
     })
 

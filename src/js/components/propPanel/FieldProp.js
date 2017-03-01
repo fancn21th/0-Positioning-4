@@ -1,5 +1,7 @@
 import React from 'react'
+import $ from 'jquery'
 import FormStore from '../../stores/FormStore'
+import * as FieldProActions from '../../actions/FieldProActions'
 
 export default class FieldProp extends React.Component {
 
@@ -16,6 +18,11 @@ export default class FieldProp extends React.Component {
         })
     }
 
+    handleClick = (evt) => {
+        evt.preventDefault()
+        FieldProActions.changeFieldStyle($(evt.target).text().substr(0,1))
+    }
+
     componentWillMount() {
         FormStore.on("SELECT_FIELD_EVT", this.updateProp)
     }
@@ -29,7 +36,13 @@ export default class FieldProp extends React.Component {
         const selectedClass = 'btn btn-primary'
         const classList = [defaultClass, defaultClass, defaultClass, defaultClass]
 
-        classList[this.state.propStyle -1 ] = selectedClass
+        classList[this.state.propStyle - 1] = selectedClass
+
+        const buttonList = [1,2,3,4].map((idx)=>{
+            return (
+                <button key={idx} type="button" onClick={this.handleClick} class={classList[idx-1]}>{idx}列</button>
+            )
+        })
 
         return (
             <div>
@@ -38,10 +51,7 @@ export default class FieldProp extends React.Component {
                 </ul>
                 <br/>
                 <div class="btn-group" role="group">
-                    <button type="button" class={classList[0]}>单列</button>
-                    <button type="button" class={classList[1]}>两列</button>
-                    <button type="button" class={classList[2]}>三列</button>
-                    <button type="button" class={classList[3]}>四列</button>
+                    { buttonList }
                 </div>
             </div>
         )

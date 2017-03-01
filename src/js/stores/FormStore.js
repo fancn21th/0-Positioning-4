@@ -19,20 +19,39 @@ class FormStore extends EventEmitter {
         return this.selectedField
     }
 
-    createField(){
-        this.form.fields.push({
-            id: Date.now() + 'x',
-            text: 'Test Text',
-            colSpan: 1,
-            type: 'textbox'
-        })
+    createField(idx){
+        if(idx){
+            this.form.fields.splice(
+                idx,
+                0,
+                {
+                    id: Date.now() + 'N',
+                    text: 'Test Text',
+                    colSpan: 1,
+                    type: 'textbox'
+                }
+            )
 
-        this.emit('CREATE_FIELD_EVT')
+            this.emit('CREATE_FIELD_EVT')
+        }else{
+            this.form.fields.push({
+                id: Date.now() + 'N',
+                text: 'Test Text',
+                colSpan: 1,
+                type: 'textbox'
+            })
+            this.emit('CREATE_FIELD_EVT')
+        }
     }
 
     selectField(id){
         this.selectedField = _.find(this.form.fields, field => field.id === id)
         this.emit('SELECT_FIELD_EVT')
+    }
+
+    updateFieldStyle(colSpan){
+        console.log(this.selectedField)
+        this.selectedField.colSpan = colSpan
     }
 
     handleActions(action) {
@@ -43,11 +62,15 @@ class FormStore extends EventEmitter {
                 break
             }
             case 'CREATE_FIELD': {
-                this.createField('CREATE_FIELD_EVT')
+                this.createField(action.index)
                 break
             }
             case 'SELECT_FIELD': {
                 this.selectField(action.id)
+                break
+            }
+            case 'CHANGE_FIELD_STYLE': {
+                this.updateFieldStyle(action.colSpan)
                 break
             }
         }
