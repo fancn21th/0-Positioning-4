@@ -1,3 +1,5 @@
+import { insert } from './Utils'
+
 export const getStuffedArray = (gapArray) => {
     const stuffedArray = [], gapArray2 = gapArray || []
     let sum = 0, lastSum = 0
@@ -27,18 +29,18 @@ export const getStuffedArray = (gapArray) => {
     return stuffedArray;
 }
 
-export const getStuffedIndexArray = (gapArray) => {
-    const stuffedIndexArray = []
+export const getStuffedInfoArray = (gapArray) => {
+    const stuffedInfoArray = [], gapArray2 = gapArray || []
     let sum = 0, lastSum = 0
 
-    gapArray.forEach((element, index, array)=> {
+    gapArray2.forEach((element, index, array)=> {
         lastSum = sum
         sum += element
 
         if(sum == 4){ // current element has no gap to next element
             sum = 0
         }else if(sum > 4){ // current element has gap to next element then fill it
-            stuffedIndexArray.push({
+            stuffedInfoArray.push({
                 index: index,
                 value: 4 - lastSum
             })
@@ -51,9 +53,27 @@ export const getStuffedIndexArray = (gapArray) => {
         }
     })
 
-    return stuffedIndexArray;
+    return stuffedInfoArray;
 }
 
 export const getStuffedFields = (fields) => {
+    const gapIndexFields = getGapIndexFields(fields)
+    const stuffedInfoArray = getStuffedInfoArray(gapIndexFields)
+    let getStuffedFields = [...fields]
+    let offset = 0
+
+    stuffedInfoArray.forEach((element, index, array)=> {
+        getStuffedFields = insert(getStuffedFields, element.index + (offset++), {
+            id: Date.now()+ offset + 'S',
+            text: 'Stuffed',
+            colSpan: element.value,
+            type: 'stuffed'
+        })
+    })
+
+    return getStuffedFields
+}
+
+export const getGapIndexFields = (fields) => {
     return fields.map(field => field.colSpan)
 }

@@ -13,11 +13,17 @@ export default class viewPart extends React.Component {
             <input type="text" className="agz-viewPart__textbox"/>
         )
 
+        const stuffed = (
+            <h5>I am stuffed</h5>
+        )
+
+        const content = this.props.type == 'textbox' ? textbox : stuffed
+
         return (
             <div class={this.props.className} onClick={this.handleClick}>
-                {this.props.index}
+                {this.props.id}
                 <div class="ui-widget-header">
-                    { textbox }
+                    { content }
                 </div>
             </div>
         )
