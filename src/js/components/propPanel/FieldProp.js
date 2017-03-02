@@ -25,10 +25,12 @@ export default class FieldProp extends React.Component {
 
     componentWillMount() {
         FormStore.on("SELECT_FIELD_EVT", this.updateProp)
+        FormStore.on("CREATE_FIELD_EVT", this.updateProp)
     }
 
     componentWillUnmount() {
         FormStore.removeListener("SELECT_FIELD_EVT", this.updateProp);
+        FormStore.removeListener("CREATE_FIELD_EVT", this.updateProp)
     }
 
     render() {
@@ -36,6 +38,8 @@ export default class FieldProp extends React.Component {
         const selectedClass = 'btn btn-primary'
         const classList = [defaultClass, defaultClass, defaultClass, defaultClass]
         let id = null
+
+        debugger
 
         if(this.state.selectedField){
             classList[this.state.selectedField.colSpan - 1] = selectedClass
