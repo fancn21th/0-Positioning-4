@@ -41,7 +41,7 @@ export const getStuffedInfoArray = (gapArray) => {
             sum = 0
         }else if(sum > 4){ // current element has gap to next element then fill it
             stuffedInfoArray.push({
-                index: index,
+                insertedIndex: index,
                 value: 4 - lastSum
             })
 
@@ -60,15 +60,19 @@ export const getStuffedFields = (fields) => {
     const gapIndexFields = getGapIndexFields(fields)
     const stuffedInfoArray = getStuffedInfoArray(gapIndexFields)
     let getStuffedFields = [...fields]
-    let offset = 0
+    let offset = 0, index = 0
+
+    fields.forEach((element, index, array)=>{
+        element.index = index++
+    })
 
     stuffedInfoArray.forEach((element, index, array)=> {
-        getStuffedFields = insert(getStuffedFields, element.index + (offset++), {
+        getStuffedFields = insert(getStuffedFields, element.insertedIndex + (offset++), {
             id: Date.now()+ offset + 'S',
             text: 'Stuffed',
             colSpan: element.value,
             type: 'stuffed',
-            index: element.index
+            insertedIndex: element.insertedIndex
         })
     })
 

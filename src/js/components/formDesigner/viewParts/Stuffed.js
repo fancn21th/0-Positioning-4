@@ -13,7 +13,7 @@ export default class Stuffed extends React.Component {
         $('#' + this.props.id).droppable({
             greedy: true,
             drop: function(evt, ui) {
-                FormActions.createField(that.props.index)
+                FormActions.createField(that.props.insertedIndex)
             }
         })
     }
