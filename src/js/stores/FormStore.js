@@ -20,7 +20,7 @@ class FormStore extends EventEmitter {
     }
 
     createField(idx){
-        if(idx){
+        if(typeof idx === 'number'){
             this.form.fields.splice(
                 idx,
                 0,

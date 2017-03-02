@@ -4,7 +4,7 @@ import 'jquery-ui/ui/widgets/droppable'
 
 import * as FormActions from '../../../actions/FormActions'
 
-export default class Stuffed extends React.Component {
+export default class Gap extends React.Component {
 
     rendeDroppable = () => {
         const that = this
@@ -26,7 +26,7 @@ export default class Stuffed extends React.Component {
         const id = this.props.id
 
         return (
-            <h5 id={id}>I am stuffed</h5>
+            <h5 id={id}>I am a gap</h5>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ViewPartActions from '../../actions/ViewPartActions'
 import Textbox from './viewParts/Textbox'
-import Stuffed from './viewParts/Stuffed'
+import Gap from './viewParts/Gap'
 
 export default class viewPart extends React.Component {
 
@@ -11,7 +11,7 @@ export default class viewPart extends React.Component {
     }
 
     render() {
-        const content = this.props.type == 'textbox' ? <Textbox {...this.props}/> : <Stuffed {...this.props}/>
+        const content = this.props.type == 'textbox' ? <Textbox {...this.props}/> : <Gap {...this.props}/>
 
         const deleteButton = this.props.type == 'textbox' ?
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> : null
