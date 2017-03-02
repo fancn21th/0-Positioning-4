@@ -49,7 +49,11 @@ class FormStore extends EventEmitter {
     }
 
     updateFieldStyle(colSpan){
-        this.selectedField.colSpan = colSpan
+        if(typeof colSpan === 'string'){
+            this.selectedField.colSpan = parseInt(colSpan)
+        }else{
+            this.selectedField.colSpan = colSpan
+        }
         this.emit('CREATE_FIELD_EVT')
     }
 
