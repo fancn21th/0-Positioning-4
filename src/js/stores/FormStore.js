@@ -31,7 +31,6 @@ class FormStore extends EventEmitter {
                     type: 'textbox'
                 }
             )
-
             this.emit('CREATE_FIELD_EVT')
         }else{
             this.form.fields.push({
@@ -50,8 +49,8 @@ class FormStore extends EventEmitter {
     }
 
     updateFieldStyle(colSpan){
-        console.log(this.selectedField)
         this.selectedField.colSpan = colSpan
+        this.emit('CREATE_FIELD_EVT')
     }
 
     handleActions(action) {

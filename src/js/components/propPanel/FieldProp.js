@@ -8,13 +8,13 @@ export default class FieldProp extends React.Component {
     constructor(){
         super()
         this.state = {
-            propStyle: 0
+            selectedField: null
         }
     }
 
     updateProp = () => {
         this.setState({
-            propStyle: FormStore.getSelectedFiled().colSpan
+            selectedField: FormStore.getSelectedFiled()
         })
     }
 
@@ -35,8 +35,12 @@ export default class FieldProp extends React.Component {
         const defaultClass = 'btn btn-default'
         const selectedClass = 'btn btn-primary'
         const classList = [defaultClass, defaultClass, defaultClass, defaultClass]
+        let id = null
 
-        classList[this.state.propStyle - 1] = selectedClass
+        if(this.state.selectedField){
+            classList[this.state.selectedField.colSpan - 1] = selectedClass
+            id = this.state.selectedField.id
+        }
 
         const buttonList = [1,2,3,4].map((idx)=>{
             return (
@@ -50,6 +54,7 @@ export default class FieldProp extends React.Component {
                     <li role="presentation" class="active"><a href="#">字段属性</a></li>
                 </ul>
                 <br/>
+                { id }
                 <div class="btn-group" role="group">
                     { buttonList }
                 </div>
